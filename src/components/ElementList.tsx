@@ -8,9 +8,9 @@ const ElementList: React.FC = () => {
   const ref = useRef(null);
 
   return (
-    <div className="mt-4 flex space-x-2">
-      <TransitionGroup className="flex h-screen w-screen">
-        {elements.map((element) => (
+    <div className="relative w-full overflow-hidden" style={{ height: '20vw' }}>
+      <TransitionGroup className="wrapper relative flex h-20">
+        {elements.map((element, index) => (
           <CSSTransition
             key={element.id}
             timeout={500}
@@ -19,10 +19,12 @@ const ElementList: React.FC = () => {
           >
             <div
               style={{
+                '--h': `${index * 100}%`,
+                '--w': `${index * 200}%`,
                 backgroundColor: element.color,
-                width: '20%',
-                height: '20%',
+                transform: `translateX(${index * 100}%)`,
               }}
+              className="my-node-move h-full w-1/5 text-white"
             />
           </CSSTransition>
         ))}

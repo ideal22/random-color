@@ -1,18 +1,24 @@
 .my-node-enter {
-  opacity: 0;
-  transform: translateX(-100%);
+  transform: translateX(-100%) !important;
 }
 .my-node-enter-active {
-  opacity: 1;
-  transform: translateX(0);
-  transition: all 0.5s;
+  transform: translateX(0) !important;
 }
 .my-node-exit {
-  opacity: 1;
-  transform: translateX(0);
+  transform: translateX(var(--h)) !important;
 }
 .my-node-exit-active {
-  opacity: 0;
-  transform: translateX(100%);
-  transition: all 0.5s;
+  transform: translateX(var(--w)) !important;
+}
+.my-node-exit-active:first-child {
+  transform: translateX(100%) !important;
+}
+.my-node-move {
+  position: absolute;
+  left: 0;
+  transition: transform 500ms ease;
+}
+
+.my-node-move + * {
+  transform: translateX(20%);
 }
